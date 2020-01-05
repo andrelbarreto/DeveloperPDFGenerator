@@ -1,23 +1,23 @@
 const colors = {
-    green: {
+    Green: {
       wrapperBackground: "#E6E1C3",
       headerBackground: "#C1C72C",
       headerColor: "black",
       photoBorderColor: "#black"
     },
-    blue: {
+    Blue: {
       wrapperBackground: "#5F64D3",
       headerBackground: "#26175A",
       headerColor: "white",
       photoBorderColor: "#73448C",
     },
-    pink: {
+    Pink: {
       wrapperBackground: "#879CDF",
       headerBackground: "#FF8374",
       headerColor: "white",
       photoBorderColor: "#FEE24C"
     },
-    red: {
+    Red: {
       wrapperBackground: "#DE9967",
       headerBackground: "#870603",
       headerColor: "white",
@@ -53,7 +53,7 @@ const colors = {
            }
            .wrapper {
            background-color: ${colors[data.color].wrapperBackground};
-           padding-top: 120px;
+           padding-top: 100px;
            }
            body {
            background-color: white;
@@ -173,13 +173,14 @@ const colors = {
         </style>
      </head>
      <body>
+     
         <div class="wrapper">
            <div class="photo-header">
               <img src="${data.avatar_url}" alt="Photo of ${data.name}" />
               <h1>Hi!</h1>
               <h2>
               My name is ${data.name}!</h1>
-              <h5>${data.company ? `Currently @ ${data.company}` : ""}</h5>
+              <h5>${data.company ? `Currently at ${data.company}` : ""}</h5>
               <nav class="links-nav">
                  ${
                    data.location

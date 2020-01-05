@@ -16,14 +16,14 @@ const questions = [
   {
     type: "input",
     name: "github",
-    message: "What is your GitHub username?"
+    message: "Please enter your GitHub username : "
   },
 
   {
     type: "list",
     name: "color",
-    message: "What is your favorite color?",
-    choices: ["green", "blue", "pink", "red"]
+    message: "What color would you like for your profile ?",
+    choices: ["Green", "Blue", "Pink", "Red"]
   }
 ];
 
@@ -33,12 +33,12 @@ function writeToFile(fileName, data) {
 
 function init() {
   inquirer.prompt(questions).then(({ github, color }) => {
-    console.log("Searching...");
+    console.log("Searching for user info...");
 
     api
       .getUser(github)
       .then(response =>
-        api.getTotalStars(github).then(stars => {
+        api.getAllStars(github).then(stars => {
           return generateHTML({
             stars,
             color,
@@ -57,12 +57,12 @@ function init() {
           }
 
           result.stream.pipe(
-            fs.createWriteStream(path.join(__dirname, `resume_${color}.pdf`))
+            fs.createWriteStream(path.join(__dirname, `DeveloperPDF_${color}.pdf`))
           );
           conversion.kill();
         });
 
-        open(path.join(process.cwd(), `resume_${color}.pdf`));
+        open(path.join(process.cwd(), `DeveloperPDF_${color}.pdf`));
       });
   });
 }
